@@ -31,8 +31,3 @@ group by
     lp.last_payment_amount,
     per.full_fio,
     c.customer_name
-    
- select *
- from project_report
- 
- drop materialized view project_report
