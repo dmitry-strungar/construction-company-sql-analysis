@@ -84,7 +84,6 @@ All calculations are performed using PostgreSQL.
 
 ## Project Structure
 
-- schema.sql
 - business_queries.sql
 - materialized_view.sql
 - database_schema.png
