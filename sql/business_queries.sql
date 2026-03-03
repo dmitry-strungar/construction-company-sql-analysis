@@ -1,21 +1,21 @@
 -- =====================================================
--- CONSTRUCTION COMPANY ANALYTICS
--- Business Queries
+-- АНАЛИТИКА СТРОИТЕЛЬНОЙ КОМПАНИИ
+-- Бизнес-запросы
 -- =====================================================
 
 
 -- =====================================================
--- 1. Project Portfolio Analysis
+-- 1. Анализ портфеля проектов
 -- =====================================================
 
--- 1.1 Number of projects signed in 2023
+-- 1.1 Количество проектов, подписанных в 2023 году
 select count(*) 
 from project
 where sign_date >= '2023-01-01'
   and sign_date <  '2024-01-01'
 
 
--- 1.2 Annual project revenue comparison
+-- 1.2 Сравнение годового дохода проекта
 select year, total
 from (
     select extract(year from sign_date) as year,
@@ -48,10 +48,10 @@ order by year
 
 
 -- =====================================================
--- 2. Workforce & HR Analysis
+-- 2. Анализ кадровых ресурсов и управления персоналом
 -- =====================================================
 
--- 2.1 Total work experience of employees hired in 2022
+-- 2.1 Общий стаж работы сотрудников, принятых на работу в 2022 году
 select to_char(
          justify_interval(
            sum(age(current_date, p.birthdate))
@@ -64,7 +64,7 @@ where e.hire_date >= '2022-01-01'
   and e.hire_date <  '2023-01-01'
 
 
--- 2.2 Earliest hired employee with specific surname criteria
+-- 2.2 Первый принятый на работу сотрудник с определенными критериями по фамилии
 select fio, hire_date
 from (
     select p.first_name || ' ' || p.last_name as fio,
@@ -80,7 +80,7 @@ order by random()
 limit 1
 
 
--- 2.3 Average age of dismissed non-manager employees
+-- 2.3 Средний возраст уволенных сотрудников, не занимающих руководящие должности
 select coalesce(
          avg(extract(year from age(current_date, p.birthdate))),
          0
@@ -97,10 +97,10 @@ where e.dismissal_date is not null
 
 
 -- =====================================================
--- 3. Financial & Cash Flow Analysis
+-- 3. Финансовый анализ и анализ денежных потоков
 -- =====================================================
 
--- 3.1 Total received payments in Zhukovsky, Russia
+-- 3.1 Общая сумма полученных платежей в Жуковском, Россия
 select sum(pp.amount)
 from country co
 join city ci on co.country_id = ci.country_id
@@ -113,7 +113,7 @@ where co.country_name = 'Россия'
   and pp.fact_transaction_timestamp is not null
 
 
--- 3.2 First date when cumulative advance payments exceeded 30M per month
+-- 3.2 Первая дата, когда совокупные авансовые платежи превысили 30 миллионов в месяц
 with payments as (
     select plan_payment_date,
            sum(amount) over (
@@ -142,10 +142,10 @@ order by plan_payment_date
 
 
 -- =====================================================
--- 4. Management Performance
+-- 4. Эффективность управления
 -- =====================================================
 
--- 4.1 Top project manager bonus (1% of completed projects cost)
+-- 4.1 Бонус лучшему менеджеру проекта (1% от стоимости завершенных проектов)
 with bonus_cte as (
     select project_manager_id,
            sum(project_cost) * 0.01 as bonus
@@ -165,10 +165,10 @@ where b.bonus = (select max(bonus) from bonus_cte)
 
 
 -- =====================================================
--- 5. Organizational Structure Analysis
+-- 5. Анализ организационной структуры
 -- =====================================================
 
--- 5.1 Total payroll cost for organizational unit hierarchy
+-- 5.1 Общие затраты на заработную плату для иерархии организационных подразделений
 with recursive cte as (
     select unit_id
     from company_structure
