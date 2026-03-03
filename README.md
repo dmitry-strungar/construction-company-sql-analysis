@@ -1,88 +1,88 @@
-# Construction Company Operational Analysis
+# Операционный анализ строительной компании
 
 ---
 
-## Project Overview
+## Обзор проекта
 
-This project presents a comprehensive SQL analysis of a construction company database implemented in PostgreSQL.
+Данный проект представляет собой комплексный SQL-анализ базы данных строительной компании, реализованной в PostgreSQL.
 
-The analysis focuses on:
+Анализ сосредоточен на:
 
-- Project portfolio performance
-- Workforce structure and salary costs
-- Cash flow dynamics
-- Manager performance evaluation
-- Revenue concentration by customer
+- Эффективности портфеля проектов
+- Структуре персонала и затратах на заработную плату
+- Динамике денежных потоков
+- Оценке эффективности менеджеров
+- Концентрации выручки по клиентам
 
-All analytical tasks are implemented using pure SQL queries.
-
----
-
-## Business Context
-
-The construction company manages multiple projects across different regions and works with various contractors.
-
-The management requires analytical reporting to:
-
-- Monitor signed projects and their cost
-- Analyze completed projects
-- Evaluate employee structure and salary distribution
-- Track accumulated payments
-- Assess bonus calculation for project managers
-- Analyze customer revenue concentration
-
-The database includes projects, payments, employees, company hierarchy and customer data.
+Все аналитические задачи реализованы с использованием чистых SQL-запросов.
 
 ---
 
-## Data Structure
+## Бизнес-контекст
 
-The relational PostgreSQL database contains:
+Строительная компания управляет несколькими проектами в различных регионах и сотрудничает с различными подрядчиками.
 
-- Projects
-- Project payments
-- Employees and salary history
-- Organizational hierarchy (recursive structure)
-- Customers and types of work
-- Geographic hierarchy (Country → City → Address)
+Руководству требуется аналитическая отчетность для:
 
-The schema is normalized and built with foreign key constraints.
+- Мониторинга подписанных проектов и их стоимости
+- Анализа завершенных проектов
+- Оценки структуры сотрудников и распределения заработной платы
+- Отслеживания накопленных платежей
+- Оценки расчета бонусов для менеджеров проектов
+- Анализа концентрации выручки по клиентам
 
----
-
-## Key Analytical Tasks
-
-- Count projects signed in 2023
-- Calculate total age of employees hired in 2022
-- Identify longest-working employees
-- Calculate average age of dismissed employees
-- Calculate total payments from customers in specific locations
-- Determine highest manager bonus (1% of completed projects)
-- Calculate cumulative advance payments per month
-- Perform recursive salary aggregation by department
-- Apply rolling average calculations on payments
-- Create a materialized reporting view
+База данных включает проекты, платежи, сотрудников, иерархию компании и данные клиентов.
 
 ---
 
-## Analytical Logic
+## Структура данных
 
-The project demonstrates:
+Реляционная база данных PostgreSQL содержит:
 
-- Multi-table JOIN logic
+- Проекты
+- Платежи по проектам
+- Сотрудников и историю заработной платы
+- Организационную иерархию (рекурсивная структура)
+- Клиентов и виды работ
+- Географическую иерархию (Страна → Город → Адрес)
+
+Схема нормализована и построена с использованием ограничений внешних ключей.
+
+---
+
+## Ключевые аналитические задачи
+
+- Подсчитать количество проектов, подписанных в 2023 году
+- Рассчитать суммарный возраст сотрудников, принятых на работу в 2022 году
+- Определить сотрудников с наибольшим стажем работы
+- Рассчитать средний возраст уволенных сотрудников
+- Рассчитать общий объем платежей от клиентов в определенных локациях
+- Определить наибольший бонус менеджера (1% от завершенных проектов)
+- Рассчитать накопленные авансовые платежи по месяцам
+- Выполнить рекурсивную агрегацию заработной платы по отделам
+- Применить расчет скользящего среднего к платежам
+- Создать материализованное представление для отчетности
+
+---
+
+## Аналитическая логика
+
+Проект демонстрирует:
+
+- Логику JOIN для нескольких таблиц
 - Common Table Expressions (CTE)
-- Recursive CTE for hierarchical structures
-- Window functions (ROW_NUMBER, RANK, AVG OVER, cumulative SUM)
-- Date and interval calculations
-- Conditional filtering
-- LATERAL joins
-- Materialized view creation
+- Рекурсивные CTE для иерархических структур
+- Оконные функции (ROW_NUMBER, RANK, AVG OVER, накопительная SUM)
+- Расчеты дат и интервалов
+- Условную фильтрацию
+- LATERAL JOIN
+- Создание материализованного представления
 
-All calculations are performed using PostgreSQL.
+Все расчеты выполнены с использованием PostgreSQL.
 
 ---
 
-## Project Structure
+## Структура проекта
 
 - business_queries.sql
 - materialized_view.sql
