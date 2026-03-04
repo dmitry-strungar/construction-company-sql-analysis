@@ -39,7 +39,7 @@ Database diagram: `database_schema.png`
 
 ---
 
-## Key Business Insights
+## Key Insights
 
 ### Stable Contract Flow
 
