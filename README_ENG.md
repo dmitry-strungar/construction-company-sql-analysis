@@ -1,84 +1,111 @@
-# Construction Company Operational Analysis
-
----
+# Construction Company SQL Analysis (PostgreSQL)
 
 ## Project Overview
 
-This project presents a comprehensive SQL analysis of a construction company database implemented in PostgreSQL.
+This project represents a comprehensive operational and financial SQL analysis of a construction company database implemented in PostgreSQL.
 
-The analysis focuses on:
+The objective is to extract business-critical insights using advanced SQL logic applied to a fully normalized relational schema.
+
+The analysis covers:
 
 - Project portfolio performance
-- Workforce structure and salary costs
 - Cash flow dynamics
-- Manager performance evaluation
-- Revenue concentration by customer
+- Workforce structure and payroll costs
+- Manager bonus evaluation
+- Revenue concentration
+- Operational reporting automation
 
-All analytical tasks are implemented using pure SQL queries.
-
----
-
-## Business Context
-
-The construction company manages multiple projects across different regions and works with various contractors.
-
-The management requires analytical reporting to:
-
-- Monitor signed projects and their cost
-- Analyze completed projects
-- Evaluate employee structure and salary distribution
-- Track accumulated payments
-- Assess bonus calculation for project managers
-- Analyze customer revenue concentration
-
-The database includes projects, payments, employees, company hierarchy and customer data.
+All analytical tasks are implemented using pure SQL.
 
 ---
 
-## Data Structure
+## Database Structure
 
-The relational PostgreSQL database contains:
+The PostgreSQL database includes the following entities:
 
 - Projects
-- Project payments
-- Employees and salary history
+- Project payments (planned and actual)
+- Employees
+- Salary history
 - Organizational hierarchy (recursive structure)
-- Customers and types of work
+- Customers
+- Types of work
 - Geographic hierarchy (Country → City → Address)
 
-The schema is normalized and built with foreign key constraints.
+The schema is fully normalized and built with foreign key constraints.
+
+Database diagram: `database_schema.png`
+
 
 ---
 
-## Key Analytical Tasks
+## Key Business Insights
 
-- Count projects signed in 2023
-- Calculate total age of employees hired in 2022
-- Identify longest-working employees
-- Calculate average age of dismissed employees
-- Calculate total payments from customers in specific locations
-- Determine highest manager bonus (1% of completed projects)
-- Calculate cumulative advance payments per month
-- Perform recursive salary aggregation by department
-- Apply rolling average calculations on payments
-- Create a materialized reporting view
+### Stable Contract Flow
+
+The company signed **54 projects in 2023**, indicating stable operational workload and sustained demand.
+
+### Experienced Workforce Structure
+
+Employees hired in 2022 represent a combined age exceeding **127 years**, suggesting a focus on experienced professionals rather than junior hires.
+
+### Long-Term Retention
+
+The longest-working employee has been with the company since **2015**, indicating organizational stability and institutional knowledge retention.
+
+### Workforce Optimization Pattern
+
+The average dismissal age of **43.75 years** may indicate mid-career restructuring or cost optimization strategies.
+
+### Regional Revenue Concentration
+
+Payments from a specific region total **31.78 million**, revealing geographic revenue dependency and potential regional risk exposure.
+
+### Manager Bonus Concentration
+
+The highest manager bonus equals **904,814.22**, reflecting uneven distribution of high-value projects.
+
+### Strong Liquidity Structure
+
+Cumulative advance payments exceed the defined threshold early in the month, demonstrating strong liquidity and front-loaded cash inflows.
+
+### Hierarchical Salary Burden
+
+Recursive salary aggregation for a department equals **3,540,000**, highlighting the financial weight of hierarchical structure.
+
+### Portfolio Value Shift in 2024
+
+Total project cost in 2024 (**169,148,040**) falls below rolling average threshold, potentially indicating margin compression or smaller contract sizes.
+
+### Reporting Automation
+
+A materialized view consolidates:
+
+- Last payment date
+- Last payment amount
+- Project manager
+- Customer
+- Types of work
+
+This enables fast executive-level reporting and reduces analytical overhead.
 
 ---
 
-## Analytical Logic
+## SQL Techniques Demonstrated
 
-The project demonstrates:
-
-- Multi-table JOIN logic
+- Complex multi-table JOIN operations
 - Common Table Expressions (CTE)
-- Recursive CTE for hierarchical structures
-- Window functions (ROW_NUMBER, RANK, AVG OVER, cumulative SUM)
-- Date and interval calculations
-- Conditional filtering
+- Recursive CTE
+- Window functions (ROW_NUMBER, SUM OVER, AVG OVER)
+- Rolling averages
+- Cumulative sums
+- Date interval calculations
 - LATERAL joins
+- Conditional filtering
 - Materialized view creation
 
-All calculations are performed using PostgreSQL.
+All logic implemented in PostgreSQL.
+
 
 ---
 
