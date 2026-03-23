@@ -90,6 +90,19 @@ A materialized view consolidates:
 This enables fast executive-level reporting and reduces analytical overhead.
 
 ---
+## Business Value
+Provides full visibility into project portfolio performance and cash flow  
+Identifies revenue concentration by customers  
+Evaluates manager performance based on completed projects  
+Supports financial control and operational decision-making  
+
+## Stakeholders
+Finance Department  
+Project Managers  
+Executives  
+HR Department  
+
+---
 
 ## SQL Techniques Demonstrated
 
